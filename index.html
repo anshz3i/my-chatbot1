@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Chatbot</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f3f3f3; }
+    #output { margin-top: 20px; font-size: 18px; white-space: pre-line; }
+    img { margin-top: 10px; max-width: 300px; }
+    .loading { color: gray; }
+  </style>
+</head>
+<body>
+  <h1>AI Chatbot (English / Hindi)</h1>
+  <input id="prompt" type="text" style="width:300px;">
+  <button onclick="ask()">Ask</button>
+  <div id="output"></div>
+  <img id="image" />
+
+  <script>
+    async function ask() {
+      const prompt = document.getElementById("prompt").value.toLowerCase();
+      const output = document.getElementById("output");
+      const image = document.getElementById("image");
+      output.innerHTML = "<span class='loading'>Thinking...</span>";
+      image.src = "";
+
+      setTimeout(() => {
+        // Simulated answers without any API
+        if (prompt.includes("your name")) {
+          output.innerText = "I am your AI chatbot, here to help you!";
+        } else if (prompt.includes("image") || prompt.includes("photo")) {
+          image.src = "https://placekitten.com/300/200"; // Example image URL
+          output.innerText = "Here is a cute image!";
+        } else if (prompt.includes("hello") || prompt.includes("namaste")) {
+          output.innerText = "Hello! नमस्ते! How can I assist you today?";
+        } else {
+          output.innerText = "I'm sorry, I don't understand yet. I am still learning!";
+        }
+      }, 1000); // 1 second delay for realism
+    }
+  </script>
+</body>
+</html>
